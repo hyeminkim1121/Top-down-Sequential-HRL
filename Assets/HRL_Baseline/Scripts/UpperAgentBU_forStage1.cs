@@ -2,10 +2,11 @@ using Unity.MLAgents.Actuators;
 using UnityEngine;
 
 /// <summary>
-/// Upper agent for BU Stage 2 (PPO learning).
-/// Inherits UpperAgent and is trained with Behavior Type = Default.
+/// Heuristic Upper agent for BU Stage 1.
+/// Assigns targets uniformly at random among alive enemies.
+/// Used with Behavior Type = Heuristic Only.
 /// </summary>
-public class UpperAgentBaseline : UpperAgent
+public class UpperAgentBU_forStage1 : UpperAgent
 {
     public override void Heuristic(in ActionBuffers actionsOut)
     {
