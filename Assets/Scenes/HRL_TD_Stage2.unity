@@ -390,9 +390,10 @@ GameObject:
   - component: {fileID: 86215663}
   - component: {fileID: 86215662}
   - component: {fileID: 86215661}
+  - component: {fileID: 86215660}
+  - component: {fileID: 86215659}
   - component: {fileID: 86215658}
   - component: {fileID: 86215666}
-  - component: {fileID: 86215667}
   m_Layer: 0
   m_Name: RedArtillery1 (1)
   m_TagString: RedAgent
@@ -427,8 +428,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
+--- !u!114 &86215659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86215656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b000f2cf6ac4eb54d8d13ff6a6ef6dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  MoveSpeed: 0
+  ShootingRange: 0
+  rewardWeight: 1
+  attack: 0
+  hpMax: 0
+  hp: 0
+  previousHp: 0
+  Behavior: {fileID: 0}
+  Rb: {fileID: 0}
+  EnvController: {fileID: 1773711102}
+  team: 0
+  position: 1
+  AgentLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  rotationSpeed: 180
+  IsActive: 1
+  CurrentTarget: {fileID: 0}
+  EnemyLower:
+  - {fileID: 716630520}
+  - {fileID: 1925897148}
+  - {fileID: 697804528}
+  - {fileID: 1630821310}
+  - {fileID: 1395847030}
+  - {fileID: 744489749}
+  MaxObservedEnemies: 6
+  Log_ApproachReward: 0
+  Log_ShootReward: 0
+  Log_DetectReward: 0
+--- !u!114 &86215660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86215656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
 --- !u!54 &86215661
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -473,14 +535,14 @@ MonoBehaviour:
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 0600000006000000
-    VectorActionSize: 0600000006000000
+      BranchSizes: 07000000
+    VectorActionSize: 07000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: MarlAgent1
   TeamId: 1
   m_UseChildSensors: 0
@@ -585,51 +647,6 @@ MonoBehaviour:
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
   m_StartVerticalOffset: 0
   m_EndVerticalOffset: 0
---- !u!114 &86215667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86215656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db65e9199d43e4547861366f2dbf9695, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  MoveSpeed: 0
-  ShootingRange: 0
-  rewardWeight: 1
-  attack: 0
-  hpMax: 0
-  hp: 0
-  previousHp: 0
-  Behavior: {fileID: 0}
-  Rb: {fileID: 0}
-  EnvController: {fileID: 1773711102}
-  team: 0
-  position: 1
-  AgentLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  rotationSpeed: 180
-  IsActive: 1
-  CurrentTarget: {fileID: 0}
-  EnemyLower:
-  - {fileID: 716630520}
-  - {fileID: 1925897148}
-  - {fileID: 1395847030}
-  - {fileID: 744489749}
-  - {fileID: 1630821310}
-  - {fileID: 697804528}
-  MaxObservedEnemies: 6
-  Log_ApproachReward: 0
-  Log_ShootReward: 0
-  Log_DetectReward: 0
 --- !u!1001 &87687187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -831,8 +848,9 @@ GameObject:
   m_Component:
   - component: {fileID: 145177530}
   - component: {fileID: 145177533}
+  - component: {fileID: 145177531}
+  - component: {fileID: 145177532}
   - component: {fileID: 145177535}
-  - component: {fileID: 145177536}
   m_Layer: 0
   m_Name: BlueUpper
   m_TagString: Upper
@@ -861,6 +879,58 @@ Transform:
   - {fileID: 697804524}
   m_Father: {fileID: 1773711100}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &145177531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145177529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d630f97c5762944ac5a2100ad70c79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  EnvController: {fileID: 1773711102}
+  MyLower:
+  - {fileID: 716630520}
+  - {fileID: 1630821310}
+  - {fileID: 1395847030}
+  - {fileID: 1925897148}
+  - {fileID: 744489749}
+  - {fileID: 697804528}
+  EnemyLower:
+  - {fileID: 2114021839}
+  - {fileID: 486615469}
+  - {fileID: 215229953}
+  - {fileID: 86215659}
+  - {fileID: 354552350}
+  - {fileID: 523774357}
+  MaxObservedEnemies: 6
+  PositionNorm: 600
+  StatScale: 0.01
+  DecisionPeriod: 30
+  TargetAssignInterval: 20
+--- !u!114 &145177532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145177529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
 --- !u!114 &145177533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -883,9 +953,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: ad26dee26cff8db41a44b055b1e78839, type: 3}
   m_InferenceDevice: 1
-  m_BehaviorType: 1
+  m_BehaviorType: 2
   m_BehaviorName: UpperAgent1
   TeamId: 0
   m_UseChildSensors: 1
@@ -904,44 +974,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
-  TakeActionsBetweenDecisions: 0
---- !u!114 &145177536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 145177529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d809cb2eed4c314394bc75f8e98152e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  EnvController: {fileID: 1773711102}
-  MyLower:
-  - {fileID: 716630520}
-  - {fileID: 1925897148}
-  - {fileID: 1395847030}
-  - {fileID: 744489749}
-  - {fileID: 1630821310}
-  - {fileID: 697804528}
-  EnemyLower:
-  - {fileID: 2114021843}
-  - {fileID: 86215667}
-  - {fileID: 486615473}
-  - {fileID: 523774365}
-  - {fileID: 215229957}
-  - {fileID: 354552358}
-  MaxObservedEnemies: 6
-  PositionNorm: 600
-  StatScale: 0.01
-  DecisionPeriod: 1
-  TargetAssignInterval: 20
+  DecisionPeriod: 20
+  TakeActionsBetweenDecisions: 1
 --- !u!1 &215229944
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,9 +990,10 @@ GameObject:
   - component: {fileID: 215229950}
   - component: {fileID: 215229949}
   - component: {fileID: 215229947}
+  - component: {fileID: 215229954}
+  - component: {fileID: 215229953}
   - component: {fileID: 215229955}
   - component: {fileID: 215229956}
-  - component: {fileID: 215229957}
   m_Layer: 0
   m_Name: RedTank1
   m_TagString: RedAgent
@@ -1025,14 +1060,14 @@ MonoBehaviour:
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 0600000006000000
-    VectorActionSize: 0600000006000000
+      BranchSizes: 07000000
+    VectorActionSize: 07000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: MarlAgent1
   TeamId: 1
   m_UseChildSensors: 0
@@ -1110,6 +1145,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215229944}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &215229953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215229944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b000f2cf6ac4eb54d8d13ff6a6ef6dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  MoveSpeed: 0
+  ShootingRange: 0
+  rewardWeight: 1
+  attack: 0
+  hpMax: 0
+  hp: 0
+  previousHp: 0
+  Behavior: {fileID: 0}
+  Rb: {fileID: 0}
+  EnvController: {fileID: 1773711102}
+  team: 0
+  position: 0
+  AgentLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  rotationSpeed: 180
+  IsActive: 1
+  CurrentTarget: {fileID: 0}
+  EnemyLower:
+  - {fileID: 716630520}
+  - {fileID: 1925897148}
+  - {fileID: 697804528}
+  - {fileID: 1630821310}
+  - {fileID: 1395847030}
+  - {fileID: 744489749}
+  MaxObservedEnemies: 6
+  Log_ApproachReward: 0
+  Log_ShootReward: 0
+  Log_DetectReward: 0
+--- !u!114 &215229954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215229944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
 --- !u!114 &215229955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1122,7 +1218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
 --- !u!114 &215229956
 MonoBehaviour:
@@ -1151,51 +1247,6 @@ MonoBehaviour:
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
   m_StartVerticalOffset: 0
   m_EndVerticalOffset: 0
---- !u!114 &215229957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215229944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db65e9199d43e4547861366f2dbf9695, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  MoveSpeed: 0
-  ShootingRange: 0
-  rewardWeight: 1
-  attack: 0
-  hpMax: 0
-  hp: 0
-  previousHp: 0
-  Behavior: {fileID: 0}
-  Rb: {fileID: 0}
-  EnvController: {fileID: 1773711102}
-  team: 0
-  position: 0
-  AgentLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  rotationSpeed: 180
-  IsActive: 1
-  CurrentTarget: {fileID: 0}
-  EnemyLower:
-  - {fileID: 716630520}
-  - {fileID: 1925897148}
-  - {fileID: 1395847030}
-  - {fileID: 744489749}
-  - {fileID: 1630821310}
-  - {fileID: 697804528}
-  MaxObservedEnemies: 6
-  Log_ApproachReward: 0
-  Log_ShootReward: 0
-  Log_DetectReward: 0
 --- !u!1001 &292307764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1317,9 +1368,10 @@ GameObject:
   - component: {fileID: 354552354}
   - component: {fileID: 354552353}
   - component: {fileID: 354552352}
+  - component: {fileID: 354552351}
+  - component: {fileID: 354552350}
   - component: {fileID: 354552349}
   - component: {fileID: 354552357}
-  - component: {fileID: 354552358}
   m_Layer: 0
   m_Name: RedTank1 (1)
   m_TagString: RedAgent
@@ -1354,8 +1406,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
+--- !u!114 &354552350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354552347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b000f2cf6ac4eb54d8d13ff6a6ef6dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  MoveSpeed: 0
+  ShootingRange: 0
+  rewardWeight: 1
+  attack: 0
+  hpMax: 0
+  hp: 0
+  previousHp: 0
+  Behavior: {fileID: 0}
+  Rb: {fileID: 0}
+  EnvController: {fileID: 1773711102}
+  team: 0
+  position: 0
+  AgentLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  rotationSpeed: 180
+  IsActive: 1
+  CurrentTarget: {fileID: 0}
+  EnemyLower:
+  - {fileID: 716630520}
+  - {fileID: 1925897148}
+  - {fileID: 697804528}
+  - {fileID: 1630821310}
+  - {fileID: 1395847030}
+  - {fileID: 744489749}
+  MaxObservedEnemies: 6
+  Log_ApproachReward: 0
+  Log_ShootReward: 0
+  Log_DetectReward: 0
+--- !u!114 &354552351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354552347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
 --- !u!54 &354552352
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1400,14 +1513,14 @@ MonoBehaviour:
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 0600000006000000
-    VectorActionSize: 0600000006000000
+      BranchSizes: 07000000
+    VectorActionSize: 07000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: MarlAgent1
   TeamId: 1
   m_UseChildSensors: 0
@@ -1512,51 +1625,6 @@ MonoBehaviour:
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
   m_StartVerticalOffset: 0
   m_EndVerticalOffset: 0
---- !u!114 &354552358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 354552347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db65e9199d43e4547861366f2dbf9695, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  MoveSpeed: 0
-  ShootingRange: 0
-  rewardWeight: 1
-  attack: 0
-  hpMax: 0
-  hp: 0
-  previousHp: 0
-  Behavior: {fileID: 0}
-  Rb: {fileID: 0}
-  EnvController: {fileID: 1773711102}
-  team: 0
-  position: 0
-  AgentLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  rotationSpeed: 180
-  IsActive: 1
-  CurrentTarget: {fileID: 0}
-  EnemyLower:
-  - {fileID: 716630520}
-  - {fileID: 1925897148}
-  - {fileID: 1395847030}
-  - {fileID: 744489749}
-  - {fileID: 1630821310}
-  - {fileID: 697804528}
-  MaxObservedEnemies: 6
-  Log_ApproachReward: 0
-  Log_ShootReward: 0
-  Log_DetectReward: 0
 --- !u!1 &359535991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,9 +1896,10 @@ GameObject:
   - component: {fileID: 486615466}
   - component: {fileID: 486615465}
   - component: {fileID: 486615463}
+  - component: {fileID: 486615470}
+  - component: {fileID: 486615469}
   - component: {fileID: 486615471}
   - component: {fileID: 486615472}
-  - component: {fileID: 486615473}
   m_Layer: 0
   m_Name: RedPerson1
   m_TagString: RedAgent
@@ -1897,14 +1966,14 @@ MonoBehaviour:
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 0600000006000000
-    VectorActionSize: 0600000006000000
+      BranchSizes: 07000000
+    VectorActionSize: 07000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: MarlAgent1
   TeamId: 1
   m_UseChildSensors: 0
@@ -1982,6 +2051,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486615459}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &486615469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486615459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b000f2cf6ac4eb54d8d13ff6a6ef6dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  MoveSpeed: 0
+  ShootingRange: 0
+  rewardWeight: 1
+  attack: 0
+  hpMax: 0
+  hp: 0
+  previousHp: 0
+  Behavior: {fileID: 0}
+  Rb: {fileID: 0}
+  EnvController: {fileID: 1773711102}
+  team: 0
+  position: 2
+  AgentLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  rotationSpeed: 180
+  IsActive: 1
+  CurrentTarget: {fileID: 0}
+  EnemyLower:
+  - {fileID: 716630520}
+  - {fileID: 1925897148}
+  - {fileID: 697804528}
+  - {fileID: 1630821310}
+  - {fileID: 1395847030}
+  - {fileID: 744489749}
+  MaxObservedEnemies: 6
+  Log_ApproachReward: 0
+  Log_ShootReward: 0
+  Log_DetectReward: 0
+--- !u!114 &486615470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486615459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
 --- !u!114 &486615471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1994,7 +2124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
 --- !u!114 &486615472
 MonoBehaviour:
@@ -2023,51 +2153,6 @@ MonoBehaviour:
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
   m_StartVerticalOffset: 0
   m_EndVerticalOffset: 0
---- !u!114 &486615473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486615459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db65e9199d43e4547861366f2dbf9695, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  MoveSpeed: 0
-  ShootingRange: 0
-  rewardWeight: 1
-  attack: 0
-  hpMax: 0
-  hp: 0
-  previousHp: 0
-  Behavior: {fileID: 0}
-  Rb: {fileID: 0}
-  EnvController: {fileID: 1773711102}
-  team: 0
-  position: 2
-  AgentLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  rotationSpeed: 180
-  IsActive: 1
-  CurrentTarget: {fileID: 0}
-  EnemyLower:
-  - {fileID: 716630520}
-  - {fileID: 1925897148}
-  - {fileID: 1395847030}
-  - {fileID: 744489749}
-  - {fileID: 1630821310}
-  - {fileID: 697804528}
-  MaxObservedEnemies: 6
-  Log_ApproachReward: 0
-  Log_ShootReward: 0
-  Log_DetectReward: 0
 --- !u!1001 &496114524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2197,9 +2282,10 @@ GameObject:
   - component: {fileID: 523774361}
   - component: {fileID: 523774360}
   - component: {fileID: 523774359}
+  - component: {fileID: 523774358}
+  - component: {fileID: 523774357}
   - component: {fileID: 523774356}
   - component: {fileID: 523774364}
-  - component: {fileID: 523774365}
   m_Layer: 0
   m_Name: RedPerson1 (1)
   m_TagString: RedAgent
@@ -2234,8 +2320,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
+--- !u!114 &523774357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523774354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b000f2cf6ac4eb54d8d13ff6a6ef6dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  MoveSpeed: 0
+  ShootingRange: 0
+  rewardWeight: 1
+  attack: 0
+  hpMax: 0
+  hp: 0
+  previousHp: 0
+  Behavior: {fileID: 0}
+  Rb: {fileID: 0}
+  EnvController: {fileID: 1773711102}
+  team: 0
+  position: 2
+  AgentLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  rotationSpeed: 180
+  IsActive: 1
+  CurrentTarget: {fileID: 0}
+  EnemyLower:
+  - {fileID: 716630520}
+  - {fileID: 1925897148}
+  - {fileID: 697804528}
+  - {fileID: 1630821310}
+  - {fileID: 1395847030}
+  - {fileID: 744489749}
+  MaxObservedEnemies: 6
+  Log_ApproachReward: 0
+  Log_ShootReward: 0
+  Log_DetectReward: 0
+--- !u!114 &523774358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523774354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
 --- !u!54 &523774359
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2280,14 +2427,14 @@ MonoBehaviour:
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 0600000006000000
-    VectorActionSize: 0600000006000000
+      BranchSizes: 07000000
+    VectorActionSize: 07000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: MarlAgent1
   TeamId: 1
   m_UseChildSensors: 0
@@ -2392,51 +2539,6 @@ MonoBehaviour:
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
   m_StartVerticalOffset: 0
   m_EndVerticalOffset: 0
---- !u!114 &523774365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523774354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db65e9199d43e4547861366f2dbf9695, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  MoveSpeed: 0
-  ShootingRange: 0
-  rewardWeight: 1
-  attack: 0
-  hpMax: 0
-  hp: 0
-  previousHp: 0
-  Behavior: {fileID: 0}
-  Rb: {fileID: 0}
-  EnvController: {fileID: 1773711102}
-  team: 0
-  position: 2
-  AgentLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  rotationSpeed: 180
-  IsActive: 1
-  CurrentTarget: {fileID: 0}
-  EnemyLower:
-  - {fileID: 716630520}
-  - {fileID: 1925897148}
-  - {fileID: 1395847030}
-  - {fileID: 744489749}
-  - {fileID: 1630821310}
-  - {fileID: 697804528}
-  MaxObservedEnemies: 6
-  Log_ApproachReward: 0
-  Log_ShootReward: 0
-  Log_DetectReward: 0
 --- !u!1 &539180813 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3852705841a330f489a28cd1d1866f96, type: 3}
@@ -2816,7 +2918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
 --- !u!54 &697804526
 Rigidbody:
@@ -2897,12 +2999,12 @@ MonoBehaviour:
   IsActive: 1
   CurrentTarget: {fileID: 0}
   EnemyLower:
-  - {fileID: 2114021843}
-  - {fileID: 86215667}
-  - {fileID: 486615473}
-  - {fileID: 523774365}
-  - {fileID: 215229957}
-  - {fileID: 354552358}
+  - {fileID: 2114021839}
+  - {fileID: 86215659}
+  - {fileID: 486615469}
+  - {fileID: 523774357}
+  - {fileID: 215229953}
+  - {fileID: 354552350}
   rewardGroupDamage: 0
   rewardDamageTaken: 0
 --- !u!114 &697804529
@@ -2927,9 +3029,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 51794cd26f3b2f041b29fc5299cf3b99, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: LowerAgent1
   TeamId: 0
   m_UseChildSensors: 0
@@ -3154,12 +3256,12 @@ MonoBehaviour:
   IsActive: 1
   CurrentTarget: {fileID: 0}
   EnemyLower:
-  - {fileID: 2114021843}
-  - {fileID: 86215667}
-  - {fileID: 486615473}
-  - {fileID: 523774365}
-  - {fileID: 215229957}
-  - {fileID: 354552358}
+  - {fileID: 2114021839}
+  - {fileID: 86215659}
+  - {fileID: 486615469}
+  - {fileID: 523774357}
+  - {fileID: 215229953}
+  - {fileID: 354552350}
   rewardGroupDamage: 0
   rewardDamageTaken: 0
 --- !u!114 &716630521
@@ -3184,9 +3286,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 51794cd26f3b2f041b29fc5299cf3b99, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: LowerAgent1
   TeamId: 0
   m_UseChildSensors: 0
@@ -3276,7 +3378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
 --- !u!114 &716630526
 MonoBehaviour:
@@ -3358,7 +3460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
 --- !u!54 &744489747
 Rigidbody:
@@ -3439,12 +3541,12 @@ MonoBehaviour:
   IsActive: 1
   CurrentTarget: {fileID: 0}
   EnemyLower:
-  - {fileID: 2114021843}
-  - {fileID: 86215667}
-  - {fileID: 486615473}
-  - {fileID: 523774365}
-  - {fileID: 215229957}
-  - {fileID: 354552358}
+  - {fileID: 2114021839}
+  - {fileID: 86215659}
+  - {fileID: 486615469}
+  - {fileID: 523774357}
+  - {fileID: 215229953}
+  - {fileID: 354552350}
   rewardGroupDamage: 0
   rewardDamageTaken: 0
 --- !u!114 &744489750
@@ -3469,9 +3571,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 51794cd26f3b2f041b29fc5299cf3b99, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: LowerAgent1
   TeamId: 0
   m_UseChildSensors: 0
@@ -4514,7 +4616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
 --- !u!54 &1395847028
 Rigidbody:
@@ -4595,12 +4697,12 @@ MonoBehaviour:
   IsActive: 1
   CurrentTarget: {fileID: 0}
   EnemyLower:
-  - {fileID: 2114021843}
-  - {fileID: 86215667}
-  - {fileID: 486615473}
-  - {fileID: 523774365}
-  - {fileID: 215229957}
-  - {fileID: 354552358}
+  - {fileID: 2114021839}
+  - {fileID: 86215659}
+  - {fileID: 486615469}
+  - {fileID: 523774357}
+  - {fileID: 215229953}
+  - {fileID: 354552350}
   rewardGroupDamage: 0
   rewardDamageTaken: 0
 --- !u!114 &1395847031
@@ -4625,9 +4727,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 51794cd26f3b2f041b29fc5299cf3b99, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: LowerAgent1
   TeamId: 0
   m_UseChildSensors: 0
@@ -5341,12 +5443,12 @@ MonoBehaviour:
   IsActive: 1
   CurrentTarget: {fileID: 0}
   EnemyLower:
-  - {fileID: 2114021843}
-  - {fileID: 86215667}
-  - {fileID: 486615473}
-  - {fileID: 523774365}
-  - {fileID: 215229957}
-  - {fileID: 354552358}
+  - {fileID: 2114021839}
+  - {fileID: 86215659}
+  - {fileID: 486615469}
+  - {fileID: 523774357}
+  - {fileID: 215229953}
+  - {fileID: 354552350}
   rewardGroupDamage: 0
   rewardDamageTaken: 0
 --- !u!114 &1630821311
@@ -5371,9 +5473,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 51794cd26f3b2f041b29fc5299cf3b99, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: LowerAgent1
   TeamId: 0
   m_UseChildSensors: 0
@@ -5463,7 +5565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
 --- !u!114 &1630821316
 MonoBehaviour:
@@ -5708,10 +5810,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91907b5c1530f794fa1c18eb6c6a8fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxEnvironmentSteps: 30000
+  MaxEnvironmentSteps: 3000
   ResetTimer: 0
   AgentList:
-  - agent: {fileID: 0}
+  - agent: {fileID: 145177531}
     Behavior: {fileID: 0}
   - agent: {fileID: 716630520}
     Behavior: {fileID: 0}
@@ -5725,24 +5827,27 @@ MonoBehaviour:
     Behavior: {fileID: 0}
   - agent: {fileID: 697804528}
     Behavior: {fileID: 0}
-  - agent: {fileID: 2114021843}
+  - agent: {fileID: 2114021840}
     Behavior: {fileID: 0}
-  - agent: {fileID: 86215667}
+  - agent: {fileID: 86215660}
     Behavior: {fileID: 0}
-  - agent: {fileID: 486615473}
+  - agent: {fileID: 486615470}
     Behavior: {fileID: 0}
-  - agent: {fileID: 523774365}
+  - agent: {fileID: 523774358}
     Behavior: {fileID: 0}
-  - agent: {fileID: 215229957}
+  - agent: {fileID: 215229954}
     Behavior: {fileID: 0}
-  - agent: {fileID: 354552358}
+  - agent: {fileID: 354552351}
     Behavior: {fileID: 0}
-  BlueUpperAgent: {fileID: 145177536}
+  BlueUpperAgent: {fileID: 145177531}
   CurrentBlue: 0
   CurrentRed: 0
   MaxTargetDistance: 600
   blueUpperRewardCumulative: 0
   winstatus: win
+  enableTFE: 1
+  maxEpisodes: 100
+  experimentName: BottomUp
   Upper_OnDamageDealt: 0.2
   Upper_OnDamageTaken: 0.5
   Upper_KillInfantry: 40
@@ -6014,7 +6119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
 --- !u!54 &1925897146
 Rigidbody:
@@ -6095,12 +6200,12 @@ MonoBehaviour:
   IsActive: 1
   CurrentTarget: {fileID: 0}
   EnemyLower:
-  - {fileID: 2114021843}
-  - {fileID: 86215667}
-  - {fileID: 486615473}
-  - {fileID: 523774365}
-  - {fileID: 215229957}
-  - {fileID: 354552358}
+  - {fileID: 2114021839}
+  - {fileID: 86215659}
+  - {fileID: 486615469}
+  - {fileID: 523774357}
+  - {fileID: 215229953}
+  - {fileID: 354552350}
   rewardGroupDamage: 0
   rewardDamageTaken: 0
 --- !u!114 &1925897149
@@ -6125,9 +6230,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 51794cd26f3b2f041b29fc5299cf3b99, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: LowerAgent1
   TeamId: 0
   m_UseChildSensors: 0
@@ -6655,9 +6760,10 @@ GameObject:
   - component: {fileID: 2114021835}
   - component: {fileID: 2114021834}
   - component: {fileID: 2114021832}
+  - component: {fileID: 2114021840}
+  - component: {fileID: 2114021839}
   - component: {fileID: 2114021841}
   - component: {fileID: 2114021842}
-  - component: {fileID: 2114021843}
   m_Layer: 0
   m_Name: RedArtillery1
   m_TagString: RedAgent
@@ -6709,14 +6815,14 @@ MonoBehaviour:
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 0600000006000000
-    VectorActionSize: 0600000006000000
+      BranchSizes: 07000000
+    VectorActionSize: 07000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: MarlAgent1
   TeamId: 1
   m_UseChildSensors: 0
@@ -6809,7 +6915,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2134020194}
   m_LocalEulerAnglesHint: {x: 0, y: -176.753, z: 0}
---- !u!114 &2114021841
+--- !u!114 &2114021839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6818,48 +6924,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2114021829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DecisionPeriod: 1
-  TakeActionsBetweenDecisions: 0
---- !u!114 &2114021842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114021829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags: []
-  m_RaysPerDirection: 50
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967291
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 0
-  m_EndVerticalOffset: 0
---- !u!114 &2114021843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114021829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db65e9199d43e4547861366f2dbf9695, type: 3}
+  m_Script: {fileID: 11500000, guid: b000f2cf6ac4eb54d8d13ff6a6ef6dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -6887,14 +6952,71 @@ MonoBehaviour:
   EnemyLower:
   - {fileID: 716630520}
   - {fileID: 1925897148}
+  - {fileID: 697804528}
+  - {fileID: 1630821310}
   - {fileID: 1395847030}
   - {fileID: 744489749}
-  - {fileID: 1630821310}
-  - {fileID: 697804528}
   MaxObservedEnemies: 6
   Log_ApproachReward: 0
   Log_ShootReward: 0
   Log_DetectReward: 0
+--- !u!114 &2114021840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114021829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+--- !u!114 &2114021841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114021829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 5
+  TakeActionsBetweenDecisions: 1
+--- !u!114 &2114021842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114021829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor
+  m_DetectableTags: []
+  m_RaysPerDirection: 50
+  m_MaxRayDegrees: 90
+  m_SphereCastRadius: 0.5
+  m_RayLength: 50
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
+  m_ObservationStacks: 1
+  m_AlternatingRayOrder: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0
+  m_EndVerticalOffset: 0
 --- !u!1 &2130004485 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6534b6c411f3fa640b49696bbb969c99, type: 3}
