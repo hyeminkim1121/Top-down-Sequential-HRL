@@ -39,8 +39,7 @@ public class LowerAgent : Agent
     private int lastShotColorStep = -999;
     private float lastShotTime = -999f;
 
-    private float previousDistanceToTarget;
-
+    private float previousDistanceToTarget = -1f;
 
     // 보상 항목별 누적
     private float rewardTargetApproach = 0f;
@@ -64,7 +63,7 @@ public class LowerAgent : Agent
                 hpMax = 1500f;
                 break;
             case Position.Artillery:
-                MoveSpeed = 4f;
+                MoveSpeed = 3f;
                 ShootingRange = 80f;
                 rewardWeight = 50f;
                 attack = 300f;
@@ -93,11 +92,7 @@ public class LowerAgent : Agent
         rewardGroupDamage = 0f;
         rewardDamageTaken = 0f;
 
-        if (CurrentTarget != null)
-        {
-            previousDistanceToTarget = Vector3.Distance(transform.position, CurrentTarget.transform.position);
-
-        }
+        previousDistanceToTarget = -1f;
     }
 
     public void SetTarget(Agent target)
@@ -170,21 +165,20 @@ public class LowerAgent : Agent
         if (CurrentTarget == null) return;
 
         float distance = Vector3.Distance(transform.position, CurrentTarget.transform.position);
-        float distanceDelta = previousDistanceToTarget - distance;
-        float rewardA = distanceDelta * 4f; // 거리 가중치 4 (TD 기준)
-        EnvController.BlueGroup.AddGroupReward(rewardA);
-        rewardTargetApproach += rewardA;
-        Debug.Log($"{name} TargetApproach Reward: {rewardA:F3}");
 
+        if (previousDistanceToTarget < 0f)
+        {
+            previousDistanceToTarget = distance;
+            return;
+        }
 
+        float delta = previousDistanceToTarget - distance;
+        float reward = (delta >= 0f) ? (delta * 2f) : (delta * 1f);
 
-        float rewardB = 0.02f; // 스텝당 생존 보상 (고정값)
-        EnvController.BlueGroup.AddGroupReward(rewardB);
-        rewardSurvival += rewardB;
-        Debug.Log($"{name} Survival Reward: {rewardB:F3}");
+        EnvController.BlueGroup.AddGroupReward(reward);
+        rewardTargetApproach += reward;
 
         previousDistanceToTarget = distance;
-        previousHp = hp;
     }
 
     public void ReportEpisodeRewardToController()
@@ -195,63 +189,19 @@ public class LowerAgent : Agent
 
     private void TryShoot()
     {
-        if (CurrentTarget == null || DecisionTime - lastShotStep < 15) return;
+        if (CurrentTarget == null) return;
+        if (DecisionTime - lastShotStep < 300) return;
 
-        RaycastHit hit;
-        bool hitSuccess = false;
-
-        if (position == Position.Tank || position == Position.Infantry)
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, ShootingRange, RaycastLayer))
         {
-            if (Physics.Raycast(transform.position, transform.forward, out hit, ShootingRange, RaycastLayer))
+            var target = hit.collider.GetComponent<MARLAgent>();
+            if (target != null && target.IsActive)
             {
-                // MARLAgent (RSA 상대) 또는 LowerAgent (교전 상대) 둘 다 탐지
-                Agent target = hit.collider.GetComponent<MARLAgent>() as Agent
-                            ?? hit.collider.GetComponent<LowerAgent>() as Agent;
-
-                if (target != null && target != this && IsEnemy(target))
-                {
-                    EnvController.AgentShoot(this, target);
-                    hitSuccess = true;
-                }
+                EnvController.AgentShoot(this, target);
+                lastShotStep = DecisionTime;
+                lastShotColorStep = DecisionTime;
             }
         }
-        else if (position == Position.Artillery)
-        {
-            RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, ShootingRange, RaycastLayer);
-            foreach (var eachHit in hits)
-            {
-                Agent target = eachHit.collider.GetComponent<MARLAgent>() as Agent
-                            ?? eachHit.collider.GetComponent<LowerAgent>() as Agent;
-
-                if (target != null && target != this && IsEnemy(target))
-                {
-                    EnvController.AgentShoot(this, target);
-                    hitSuccess = true;
-                    break;
-                }
-            }
-        }
-
-        if (hitSuccess)
-        {
-            lastShotStep = DecisionTime;
-            lastShotColorStep = DecisionTime;
-            lastShotTime = Time.fixedTime;
-        }
-    }
-
-    private bool IsEnemy(Agent target)
-    {
-        // 자기가 Blue(LowerAgent)면 적은 MARLAgent 또는 RedLowerAgent
-        // 자기가 Red(RedLowerAgent)면 적은 Blue LowerAgent
-        bool iAmRed = this is RedLowerAgent;
-        bool targetIsRed = target is RedLowerAgent;
-        bool targetIsMarl = target is MARLAgent;
-
-        if (iAmRed)
-            return !targetIsRed && target is LowerAgent; // Red → Blue만 공격
-        else
-            return targetIsRed || targetIsMarl; // Blue → Red 또는 MARLAgent 공격
     }
 
     public void FixedUpdate()

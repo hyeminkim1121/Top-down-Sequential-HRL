@@ -78,13 +78,13 @@ public class MARLAgent : Agent
         switch (position)
         {
             case Position.Tank:
-                MoveSpeed = 12f; ShootingRange = 60f; attack = 300f; hpMax = 1500f;
+                MoveSpeed = 6f; ShootingRange = 60f; attack = 300f; hpMax = 1500f;
                 break;
             case Position.Artillery:
-                MoveSpeed = 6f; ShootingRange = 80f; attack = 300f; hpMax = 1000f;
+                MoveSpeed = 3f; ShootingRange = 80f; attack = 300f; hpMax = 1000f;
                 break;
             case Position.Infantry:
-                MoveSpeed = 4f; ShootingRange = 50f; attack = 100f; hpMax = 500f;
+                MoveSpeed = 2f; ShootingRange = 50f; attack = 100f; hpMax = 500f;
                 break;
         }
 
@@ -271,7 +271,7 @@ public class MARLAgent : Agent
     private void TryShoot()
     {
         if (CurrentTarget == null) return;
-        if (DecisionTime - lastShotStep < 150) return;
+        if (DecisionTime - lastShotStep < 300) return;
 
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, ShootingRange, AgentLayer))
         {
