@@ -106,22 +106,32 @@ public class LowerAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        if (CurrentTarget == null)
-            sensor.AddObservation(Vector3.zero);
-        else
-            foreach (var enemy in EnemyLower)
-            {
-                sensor.AddObservation(enemy.IsActive ? 1f : 0f);
-                sensor.AddObservation(enemy.transform.position);
-                sensor.AddObservation(enemy.hpMax);
-                sensor.AddObservation(enemy.MoveSpeed);
-                sensor.AddObservation(enemy.rewardWeight);
-                sensor.AddObservation(enemy.ShootingRange);
-            }
-
-        sensor.AddObservation(IsActive ? 1f : 0f);
-        sensor.AddObservation(transform.position);
+        sensor.AddObservation(hp / hpMax);
+        sensor.AddObservation(transform.position.x / 300f);
+        sensor.AddObservation(transform.position.z / 300f);
+        sensor.AddObservation(transform.forward.x);
+        sensor.AddObservation(transform.forward.z);
         sensor.AddObservation((int)position);
+
+        if (CurrentTarget != null)
+        {
+            Vector3 relDir = (CurrentTarget.transform.position - transform.position).normalized;
+            sensor.AddObservation(relDir.x);
+            sensor.AddObservation(relDir.z);
+
+            float dist = Vector3.Distance(transform.position, CurrentTarget.transform.position) / 300f;
+            sensor.AddObservation(dist);
+
+            float angle = Vector3.SignedAngle(transform.forward, relDir, Vector3.up) / 180f;
+            sensor.AddObservation(angle);
+        }
+        else
+        {
+            sensor.AddObservation(0f);
+            sensor.AddObservation(0f);
+            sensor.AddObservation(0f);
+            sensor.AddObservation(0f);
+        }
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
