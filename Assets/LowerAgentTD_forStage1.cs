@@ -6,7 +6,7 @@ using UnityEngine;
 /// Heuristic Lower agent for TD Stage 1.
 /// Follows Upper's target assignment: rotate toward target, move forward, shoot when in range.
 /// </summary>
-public class LowerAgentTD : LowerAgent
+public class LowerAgentTD_forStage1 : LowerAgent
 {
     public override void CollectObservations(VectorSensor sensor)
     {

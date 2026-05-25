@@ -6,7 +6,7 @@ using UnityEngine;
 /// BU-2의 Red opponent (Lower가 학습됐을 때 대등한 baseline).
 /// 움직임: rule-based (rotate/shoot/forward), 타겟: alive 중 random.
 /// </summary>
-public class RsaAgentHeuristicMove : MARLAgent
+public class RsaAgent_RuleBased : MARLAgent
 {
     public override void Heuristic(in ActionBuffers actionsOut)
     {

@@ -3,7 +3,7 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using UnityEngine;
 
-public class RsaAgent : MARLAgent
+public class RsaAgent_RandomMove : MARLAgent
 {
     public override void Heuristic(in ActionBuffers actionsOut)
     {

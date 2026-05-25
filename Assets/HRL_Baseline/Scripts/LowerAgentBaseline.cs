@@ -5,7 +5,7 @@ using Unity.MLAgents.Policies;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 
-public class LowerAgentAblation : Agent
+public class LowerAgentBaseline : Agent
 {
     public enum Team { Red = 0, Blue = 1 }
     public enum Position { Tank = 0, Artillery = 1, Infantry = 2 }
