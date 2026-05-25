@@ -89,4 +89,6 @@ Two rule-based opponents are provided for training and evaluation:
 
 ## License
 
-This project is released for academic research purposes.
+This project builds upon Unity ML-Agents Toolkit (Apache License 2.0).
+The custom scripts and configurations in this repository are released
+for academic research purposes.
