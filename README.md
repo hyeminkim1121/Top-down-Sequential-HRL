@@ -39,7 +39,7 @@ config/
 
 - Unity 2021.3+ with ML-Agents Release 20
 - Python 3.8+ with PyTorch 1.13.1, CUDA 11.7
-- ML-Agents Python package (`mlagents==0.29.0`)
+- ML-Agents Python package (`mlagents==0.30.0`)
 
 ## Training
 
